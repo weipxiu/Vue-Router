@@ -9,8 +9,20 @@
       <li><router-link to='/undefined' exact event='mouseover'>Undefined</router-link></li>    
       <li><router-link to='/user' event='mouseover'>User</router-link></li>    
     </ul>
+
+    <transition>
     <router-view name="slide"></router-view>
-    <router-view class="router-view"></router-view>
+    </transition>
+
+    <!-- 运动模式out-in/in-out -->
+    <!-- <transition name="left" mode="out-in">
+      <router-view class="router-view"></router-view>
+    </transition> -->
+
+    <transition name="left">
+      <router-view class="router-view"></router-view>
+    </transition>
+    
   </div>
 </template>
 
@@ -29,13 +41,16 @@ export default {
 }
 </script>
 
-<style scope>
+<style>
 *{
   margin:0;
   padding: 0;
 }
 h1,h2{
   margin:25px 0;
+}
+body{
+  overflow: hidden;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -65,4 +80,49 @@ ul.nav li span.span-active{
 ul.nav .action{
   background: rgb(38, 219, 113)
 }
+.router-view{
+  width: 100%;
+  position: absolute;
+  left:0;
+  top:100px
+}
+/*路由组件进出场动画效果start*/
+.v-enter{
+  opacity: 0;
+}
+.v-enter-to{
+  opacity: 1;
+}
+.v-enter-active{
+  transition: 1s
+}
+.v-leave{
+  opacity: 1;
+}
+.v-leave-to{
+  opacity: 0;
+}
+.v-leave-active{
+  transition:0.7s
+}
+/*路由组件进出场动画效果end*/
+
+/*自定义的组件动画方式start*/
+/*注意，在自定义动画时候的class只能修改v-，后面的不可以修改*/
+.left-enter{ 
+  transform: translateX(100%);
+}
+.left-enter-to{ 
+  transform: translateX(0%)
+}
+.left-enter-active,.left-leave-active{ 
+  transition: 1s
+}
+.left-leave{ 
+  transform: translateX(0);
+}
+.left-leave-to{ 
+  transform: translateX(-100%)
+}
+/*自定义的组件动画方式end*/
 </style>

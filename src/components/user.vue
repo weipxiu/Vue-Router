@@ -29,11 +29,15 @@
       }
     },
     created(){
+      /*created只会在初始化时候执行一次，所以我们要将里面的代码抽离出来，
+      在watch里监听路由变化来执行相同代码做相同的事*/
       this.wacchList()
     },
     methods:{
       wacchList(){
-        let id = this.$route.params.xxx;//拿到动态路由params对象信息
+        let id = this.$route.params.xxx;
+        /*id：拿到动态路由$route.params对象信息,
+        注意，是$route而不是$router，xxx是在路由index.js文件里配置的自定义参数*/
         if(!id){
           this.userInfo = {}
           return

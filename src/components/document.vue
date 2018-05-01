@@ -33,7 +33,6 @@ a {
   color: #42b983;
 }
 .document{
-  width:calc(100% - 301px);
   float: right
 }
 </style>
