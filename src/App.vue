@@ -7,6 +7,7 @@
       <li><router-link :to="{path:'/document'}" exact event='mouseover'>Document</router-link></li>    
       <li><router-link :to="{path:'/leaving'}" exact event='mouseover'>Leaving</router-link></li>    
       <li><router-link to='/undefined' exact event='mouseover'>Undefined</router-link></li>    
+      <li><router-link to='/user' event='mouseover'>User</router-link></li>    
     </ul>
     <router-view name="slide"></router-view>
     <router-view class="router-view"></router-view>

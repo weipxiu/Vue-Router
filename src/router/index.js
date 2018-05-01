@@ -6,6 +6,7 @@ import document from '@/components/document'
 import slide from '@/components/document_slide'
 import leaving  from '@/components/leaving'
 import undefined  from '@/components/undefined'
+import user  from '@/components/user'
 
 import study  from '@/components/about_child/study'
 import work  from '@/components/about_child/work'
@@ -85,6 +86,11 @@ export default new Router({
       path: '/undefined',
       name: 'nofind',
       component: undefined
+    },
+    {
+      path: '/user/:xxx?',//:xxx?拿到路由router-link设置的参数
+      name: 'user',
+      component: user
     },
     {
       path: '*',
