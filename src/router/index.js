@@ -15,7 +15,7 @@ import hobby  from '@/components/about_child/hobby'
 
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   linkActiveClass :'action',
   scrollBehavior(to,from,savePosition){//滚动行为
     console.log(to) //进入的目标对象
@@ -32,16 +32,22 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: HelloWorld
+      component: HelloWorld,
+      meta:{
+        title:'Home-HelloWorld'
+      }
     },
     {
       path: '/home',
       name: 'HelloWorld',
       component: HelloWorld,
-      alias: '/abc' 
+      alias: '/abc',
       /*设置alias可以在访问路由为'/abc'重定向时候路由地址不会跳转，依然为abc，也就是别名，
       通过abc地址渲染的还是home，请结合下面redirect重定向设置查看，但有必要注意的是，
       如果你使用这种方式，router-link的高亮就失效了，可以地址栏输入'abc'回车测试*/
+      meta:{
+        title:'Home-HelloWorld'
+      }
     },
     {
       path: '/about',
@@ -52,7 +58,10 @@ export default new Router({
         {
           path: '', //默认子路由，值不要/，虽然测试时候发现这里带/并没什么问题
           name: 'About',//父级去掉的name
-          component: study
+          component: study,
+          meta:{
+            title:'about'
+          }
         },
         {
           path: 'work', // http://localhost:1234/about/work
@@ -75,17 +84,27 @@ export default new Router({
       components: { //多个组件渲染到一个路由(命名视图技术)
         default:document, //默认渲染到router-view没有name的路由
         slide:slide
+      },
+      meta:{
+        title:'document'
       }
     },
     {
       path: '/leaving',
       name: 'leaving',
-      component: leaving
+      component: leaving,
+      meta:{
+        title:'leaving'
+      }
     },
     {
       path: '/undefined',
       name: 'nofind',
-      component: undefined
+      component: undefined,
+      meta:{
+        login:true,
+        title:'undefined'
+      }
     },
     {
       path: '/user/:xxx?',//:xxx?拿到路由router-link设置的参数
@@ -120,3 +139,27 @@ export default new Router({
     }
   ]
 })
+
+// 路由钩子函数
+//beforeEach即将要进某个路由时候
+router.beforeEach((to, from, next)=>{
+  if(to.meta.login){
+    next(true) //false时候阻止路由执行，默认是true
+    // next('/login') 在这里判断到后去跳到登录页面，先要在路由里配置
+    alert("当前是个404组件，需要登录访问，其实你还没有登录，不过看你可怜兮兮，我暂时让你旁观！")
+  }else{
+    next()
+  }
+})
+
+//afterEach进入组件之后，当然，就没有next了，已经进入了组件
+router.afterEach((to, from)=>{
+  if(to.meta.title){
+    //当进入了组件后，如果meta里有title就设置title(注意，这个位置document前面需要加上window才能访问)
+    window.document.title = to.meta.title; 
+  }else{
+    window.document.title = '世上最完整的vue-router案例'
+  }
+})
+
+export default router
