@@ -14,6 +14,10 @@
       return {
         msg: '欢迎来到vue的世界！'
       }
+    },
+    beforeRouteEnter(to, from, next){
+      console.log('通过组件内部判断到当前访问Home页面，放行、通过！')
+      next();
     }
   }
 </script>
