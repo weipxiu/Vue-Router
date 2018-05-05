@@ -36,6 +36,7 @@
     methods:{
       wacchList(){
         let id = this.$route.params.xxx;
+        console.log(this.$route)//可以拿到当前路由对象的所有属性、参数
         /*id：拿到动态路由$route.params对象信息,
         注意，是$route而不是$router，xxx是在路由index.js文件里配置的自定义参数*/
         if(!id){
