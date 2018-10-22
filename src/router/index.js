@@ -130,16 +130,16 @@ let router = new Router({
       //redirect:{name:'nofind'}
       //第四种方式，对象通过name别名写法，同样，还是通过上面配置过的路由地址进行跳转，不是直接渲染组件方式
       
-      redirect:(to) => {//第四种方式：动态设置重定向目标
-        /*console.log(to) //to，目标路由对象，当前访问的目标路由信息
-        return '/undefined'//重定向到一个上面配置过的路由地址*/
+      // redirect:(to) => {//第四种方式：动态设置重定向目标
+      //   /*console.log(to) //to，目标路由对象，当前访问的目标路由信息
+      //   return '/undefined'//重定向到一个上面配置过的路由地址*/
 
-        //当然，既然说是动态设置，那么肯定不能向上述那样简简单单return完事，如下：
-        if(to.path == '/abc'){
-          return '/home' //如果目标路径是abc，那么我重定向到首页home
-        }
-        return '/undefined' //其他正常时候跳转到404
-      }
+      //   //当然，既然说是动态设置，那么肯定不能向上述那样简简单单return完事，如下：
+      //   if(to.path == '/abc'){
+      //     return '/home' //如果目标路径是abc，那么我重定向到首页home
+      //   }
+      //   return '/undefined' //其他正常时候跳转到404
+      // }
     }
   ]
 })

@@ -49,9 +49,7 @@ export default {
 h1,h2{
   margin:25px 0;
 }
-body{
-  overflow: hidden;
-}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
