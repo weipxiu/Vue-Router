@@ -20,7 +20,7 @@ let router = new Router({
   scrollBehavior(to,from,savePosition){//滚动行为
     //console.log(to) //进入的目标对象
     //console.log(from) //离开的路由对象
-    //console.log(savePosition)//记录滚动路由坐标
+    console.log(savePosition)//记录滚动路由坐标
     if(savePosition){
       return savePosition //针对鼠标点击浏览器前进后台，如果记录到坐标存在就返回出来之前坐标，
     }else{
@@ -117,7 +117,7 @@ let router = new Router({
     },
     {
       path: '*',
-      // component: undefined 第一种方式 - 直接去渲染404-undefined组件
+      component: undefined //第一种方式 - 直接去渲染404-undefined组件
 
       //redirect: '/undefined' 
       /* 第二种方式redirect - 路由重定向,值得注意的是：当前这个undefined必须是你在上面配置过的地址

@@ -40,10 +40,12 @@
 
 <script>
 import HelloWorld from './components/HelloWorld'
+import moment from 'moment'
 export default {
   data() {
     return {
-      index: '/home'
+      index: '/home',
+      time:moment().format()
     }
   },
   name: 'App',

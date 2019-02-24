@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{time}}
     <h1>{{ aaa }}</h1>
     <h2>当前绑定是固定路由</h2>
     <hr>
@@ -22,7 +23,8 @@
     name: 'about',
     data () {
       return {
-        aaa: '关于about页面！'
+        aaa: '关于about页面！',
+        time:this.moment().format('LL')
       }
     }
   }
