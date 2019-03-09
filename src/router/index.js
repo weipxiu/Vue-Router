@@ -89,7 +89,7 @@ let router = new Router({
         title:'document'
       },
       beforeEnter(to,from,next){ //局部路由钩子函数beforeEnter/afterEnter
-        alert("进入到document组件")
+        console.log("路由钩子函数监听到：进入到document组件")
         next(true)
       }
     },
