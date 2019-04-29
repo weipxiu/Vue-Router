@@ -51,7 +51,7 @@ let router = new Router({
     },
     {
       path: '/about',
-      //name: 'about', 
+      //name: 'about',
       //如果设置了子路由，那么name去掉，否则控制台会有警告，去掉的name应该给子路由的默认路由
       component: about,
       children:[
@@ -119,17 +119,17 @@ let router = new Router({
       path: '*',
       component: undefined //第一种方式 - 直接去渲染404-undefined组件
 
-      //redirect: '/undefined' 
+      //redirect: '/undefined'
       /* 第二种方式redirect - 路由重定向,值得注意的是：当前这个undefined必须是你在上面配置过的地址
          也就是说，重定向到达的页面必须是已经存在的路由，如果组件没在上面routes里面配置，直接去重定向一个组件是会报错
       */
-     
+
       //redirect:{path:'/undefined'}
       //第三种方式，对象写法，同样，还是通过上面配置过的路由地址进行跳转，不是直接渲染组件方式
 
       //redirect:{name:'nofind'}
       //第四种方式，对象通过name别名写法，同样，还是通过上面配置过的路由地址进行跳转，不是直接渲染组件方式
-      
+
       // redirect:(to) => {//第四种方式：动态设置重定向目标
       //   /*console.log(to) //to，目标路由对象，当前访问的目标路由信息
       //   return '/undefined'//重定向到一个上面配置过的路由地址*/
@@ -150,7 +150,7 @@ router.beforeEach((to, from, next)=>{
   if(to.meta.login){
     next(true) //false时候阻止路由执行，默认是true
     // next('/login') 在这里判断到后去跳到登录页面，先要在路由里配置
-    alert("当前是个404组件，需要登录访问，其实你还没有登录，不过看你可怜兮兮，我暂时让你旁观！")
+    console.log("当前是个404组件，需要登录访问，其实你还没有登录，不过看你可怜兮兮，我暂时让你旁观！")
   }else{
     next()
   }
@@ -160,7 +160,7 @@ router.beforeEach((to, from, next)=>{
 router.afterEach((to, from)=>{
   if(to.meta.title){
     //当进入了组件后，如果meta里有title就设置title(注意，这个位置document前面需要加上window才能访问)
-    window.document.title = to.meta.title; 
+    window.document.title = to.meta.title;
   }else{
     window.document.title = '世上最完整的vue-router案例'
   }
