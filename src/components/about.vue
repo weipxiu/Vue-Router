@@ -10,10 +10,13 @@
        <router-link :to="{path:'/about/work'}" exact tag="li">work</router-link>   
        <router-link to='/about/hobby' exact tag="li">hobby</router-link> -->
        <!-- 命名视图，通过name别名去匹配 -->
+       <!-- 路由里的name必须和export一模一样，不然keep-alived缓存会失效 -->
        <router-link :to="{name:'About'}" exact tag="li">study</router-link>   
        <router-link :to="{path:'/about/work'}" exact tag="li">work</router-link>   
        <router-link :to="{name:'Hobby'}" exact tag="li">hobby</router-link>
-       <router-view></router-view>   
+       <keep-alive>
+         <router-view></router-view>   
+        </keep-alive>
     </ul>
   </div>
 </template>
