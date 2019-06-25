@@ -117,9 +117,9 @@ let router = new Router({
     },
     {
       path: '*',
-      component: undefined //第一种方式 - 直接去渲染404-undefined组件
+      //component: undefined //第一种方式 - 直接去渲染404-undefined组件
 
-      //redirect: '/undefined'
+      redirect: '/undefined'
       /* 第二种方式redirect - 路由重定向,值得注意的是：当前这个undefined必须是你在上面配置过的地址
          也就是说，重定向到达的页面必须是已经存在的路由，如果组件没在上面routes里面配置，直接去重定向一个组件是会报错
       */
