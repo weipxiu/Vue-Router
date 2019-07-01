@@ -26,6 +26,9 @@ export default {
       window.open(routeData.resolved.name + routeData.href.substring(1), '_blank');
     }
   },
+  mounted(){
+    console.log('vue根实例',this.$router.options.routes)
+  },
   beforeRouteEnter(to, from, next) {
     //console.log('通过组件内部判断到当前访问Home页面，放行、通过！')
     //next();

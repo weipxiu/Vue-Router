@@ -29,6 +29,7 @@ let router = new Router({
     //值得注意的是在谷歌浏览器上我发现即使不设置，好像也一样
   },
   mode:'history',
+  base: '/dist/',
   routes: [
     {
       path: '/',
