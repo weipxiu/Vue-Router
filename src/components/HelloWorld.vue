@@ -1,19 +1,31 @@
-<template>
+<template comments>
   <div>
+    <!-- 这是一段注释 -->
     <h1>{{ msg }}</h1>
+    <h2 @click="methods($event)">{{ msg1 }}</h2>
     <h2 @click="onHander">首页Home</h2>
     <p>当前动态路由，所渲染的router-link最终为span标签</p>
+    <!--[if mso]> 这是一段注释 <![endif]-->
     <p style="color:#e62a91">给当前span特殊的高亮颜色，只要你想要的，我都可以给你，路由就是能配成一朵花儿来展示</p>
+    <div v-for="(item,index) in new_obj" :key="index">
+      {{ item }}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
+  comments: true,
   data() {
     return {
-      msg: '欢迎来到vue的世界！'
+      msg: '欢迎来到vue的世界！',
+      msg1:'我是一坨字符串',
+      new_obj:{100:'a',2:'b',7:'c'}
     }
+  },
+  created () {
+    ;
   },
   methods: {
     onHander() {
@@ -24,6 +36,15 @@ export default {
       });
       console.log(routeData)
       window.open(routeData.resolved.name + routeData.href.substring(1), '_blank');
+    },
+    methods(e) {
+      console.log(e.currentTarget)
+        this.msg='123321'
+    }
+  },
+  watch:{
+    msg: (val, oldVal)=>{
+      console.log('打印',this)
     }
   },
   mounted(){
