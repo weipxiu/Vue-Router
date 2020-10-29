@@ -148,14 +148,29 @@ let router = new Router({
 // 路由钩子函数
 //beforeEach即将要进某个路由时候
 router.beforeEach((to, from, next)=>{
+  console.log(from)
   if(to.meta.login){
-    next(true) //false时候阻止路由执行，默认是true
-    // next('/login') 在这里判断到后去跳到登录页面，先要在路由里配置
+    next(true) //false时候阻止路由执行，默认参数就是true
+    // next('/login') 在这里判断到后去跳到登录页面，先要在路由里配置，得有这个路由
     console.log("当前是个404组件，需要登录访问，其实你还没有登录，不过看你可怜兮兮，我暂时让你旁观！")
   }else{
     next()
   }
 })
+
+// 判断是否登录
+// router.beforeEach((to, from, next)=>{
+//   if(!sessionStorage.getItem("username")){
+//     // 判断当前是否是登录页，如果是，那就进登录页安静待着，否则就跳转到登录页，该处如果不判断，那就会出现死循环，进入登录页前同样会走beforeEach钩子函数，如此往复页面就挂掉了
+//     if(to.path == '/login'){
+//       next()
+//     }else{
+//       next({path:'/login'})
+//     }
+//   }else{
+//     next()
+//   }
+// })
 
 //afterEach进入组件之后，当然，就没有next了，已经进入了组件
 router.afterEach((to, from)=>{
