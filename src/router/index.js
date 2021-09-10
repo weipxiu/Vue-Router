@@ -7,6 +7,7 @@ import slide from '@/components/document_slide'
 import leaving  from '@/components/leaving'
 import undefined  from '@/components/undefined'
 import user  from '@/components/user'
+import tuozhuai  from '@/components/tuozhuai'
 
 import study  from '@/components/about_child/study'
 import work  from '@/components/about_child/work'
@@ -115,6 +116,11 @@ let router = new Router({
       path: '/user/:xxx?',//:xxx?拿到路由router-link设置的参数
       name: 'user',
       component: user
+    },
+    {
+      path: '/tuozhuai',
+      name: 'tuozhuai',
+      component: tuozhuai
     },
     {
       path: '*',

@@ -10,7 +10,9 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "element-ui": "^2.15.6",
     "moment": "^2.24.0",
+    "sortablejs": "^1.14.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
