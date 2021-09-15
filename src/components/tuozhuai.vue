@@ -1,6 +1,6 @@
 <template>
   <div style="width:800px">
-    <h2>拖拽测试</h2>
+    <h2>拖拽测试dev</h2>
     <el-table :data="tableData"
       border
       row-key="id"
